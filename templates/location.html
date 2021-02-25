@@ -3,15 +3,26 @@
 <html lang="en">
 {% include "head.html" %}
 
-
 {%block content%}
+ <a class="btn btn-success" href="/gallery" role="button"><i class="fa fa-play-circle" aria-hidden="true"></i> Все фотографии</a>
+<div class="container">
+    {%if results == 1%}
+    <h2 class="text-center">{{results}} photo taken in {{location.city}}, {{location.country}}</h2>
+    {%else%}
+    <h2 class="text-center">{{results}} photos taken in {{location.city}}, {{location.country}}</h2>
+    {%endif%}
+    <hr class="style-one">
+</div>
+
+
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
             <h2>Locations</h2>
             <div class="list-group">
                 {%for location in locations%}
-                <a href="{% url 'location' location.id%}" class="list-group-item list-group-item-action locale">{{location.city}}, {{location.country}}</a>
+                <a href="{% url 'location' location.id%}"
+                    class="list-group-item list-group-item-action locale">{{location.city}}, {{location.country}}</a>
                 {%endfor%}
             </div>
         </div>
@@ -37,7 +48,8 @@
                                             class="btn no-border text-white"><i class="far fa-copy"></i></button>
                                     </div>
                                     <small style="font-size: 12px; float:right" class="ml-45"><i
-                                            class="far fa-clock"></i> {{photo.post_date | timesince}} ago</small>
+                                            class="far fa-clock"></i>
+                                        {{photo.post_date | timesince}} ago</small>
                                 </span>
                             </a>
                         </div>
@@ -48,9 +60,5 @@
         </div>
     </div>
 </div>
-
-
 {%endblock%}
-{% include "scripts.html" %}
-
 </html>

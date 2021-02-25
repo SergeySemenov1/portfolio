@@ -5,6 +5,23 @@
 
 <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
 <!-- Bootstrap tooltips -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+        <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>          <!-- https://isotope.metafizzy.co/ -->
+        <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>     <!-- https://imagesloaded.desandro.com/ -->
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script> <!-- http://dimsemenov.com/plugins/magnific-popup/ -->
+        <script src="{% static 'js/parallax.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.compact-gallery', {
+            animation: 'slideIn',
+            captions: true,
+            filter: /.*ucarecdn.*/i
+        });
+    </script>
+    <script src="{%static 'js/main.js'%}"></script>
 <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>

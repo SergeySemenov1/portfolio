@@ -1,6 +1,8 @@
 
 
 from pathlib import Path
+
+import dj_database_url
 import django_heroku
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portfolio',
+    'pyuploadcare.dj',
 ]
 
 MIDDLEWARE = [
@@ -39,6 +42,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -58,6 +62,10 @@ TEMPLATES = [
         },
     },
 ]
+UPLOADCARE = {
+    'pub_key': '86db8d5a15f66114aae7',
+    'secret': '8362fc0b27e09561dbdc',
+}
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
@@ -116,8 +124,12 @@ STATIC_ROOT = BASE_DIR / "static"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 django_heroku.settings(locals())
 
+prod_db = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
 #mail settings
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"

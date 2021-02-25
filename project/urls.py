@@ -9,6 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", views.home, name="home"),
     url(r"^gallery/$", views.gallery, name="gallery"),
+    url(r"^location/(\d+)", views.location_filter, name="location"),
 ]
 
 if settings.DEBUG:
